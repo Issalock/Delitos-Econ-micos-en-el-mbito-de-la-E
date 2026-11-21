@@ -158,7 +158,7 @@
                             Código Penal
                         </button>
                         <button onclick="filterNorms('gafi')" id="nf-gafi" class="norm-filter px-3 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 shrink-0 cursor-pointer">
-                            GAFI
+                            GAFI (7 Bloques)
                         </button>
                     </div>
                 </div>
@@ -431,27 +431,130 @@
                     </div>
                 </div>
 
-                <!-- Mini-Quiz Táctil para la Clase -->
+                <!-- Infografía Directa para los Jueces Evaluadores (1795268791064.jpg) -->
                 <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm space-y-3">
-                    <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                    <div class="flex items-start justify-between gap-2 border-b border-slate-100 pb-2.5">
                         <div>
-                            <span class="text-[10px] font-extrabold uppercase tracking-wider text-gold-600">Repaso en Teléfono</span>
-                            <h3 class="font-serif text-base font-bold text-navy-900">Quiz Rápido (4 Preguntas)</h3>
+                            <span class="inline-flex items-center space-x-1 text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded bg-navy-900 text-amber-300">
+                                <span>📌 Material del Expositor</span>
+                            </span>
+                            <h3 class="font-serif text-base font-bold text-navy-900 mt-1 leading-snug mobile-title">
+                                Infografía Oficial (1795268791064.jpg)
+                            </h3>
                         </div>
-                        <button onclick="resetMobileQuiz()" class="px-2.5 py-1.5 rounded-lg bg-slate-100 text-slate-700 text-xs font-bold active:bg-slate-200 cursor-pointer">
-                            Reiniciar
+                        <button onclick="openInfographicModal()" type="button" class="px-2.5 py-1.5 rounded-xl bg-amber-100 active:bg-amber-200 text-amber-950 border border-amber-300 text-[11px] font-extrabold shrink-0 cursor-pointer">
+                            Ampliar 🔍
                         </button>
                     </div>
 
-                    <div id="mobile-quiz-list" class="space-y-4">
-                        <!-- Renderizado dinámicamente -->
+                    <p class="text-xs text-slate-600 leading-relaxed mobile-text">
+                        Síntesis visual consultada por el participante durante la exposición para que el jurado evaluador verifique la correspondencia exacta con los apuntes jurídicos:
+                    </p>
+
+                    <div class="relative rounded-2xl overflow-hidden border border-slate-300 bg-slate-100 shadow-inner">
+                        <img
+                            id="github-infographic-main"
+                            src="1795268791064.jpg"
+                            data-github-src="https://raw.githubusercontent.com/ismaelzambrano/delitos-economicos-empresa/main/1795268791064.jpg"
+                            alt="Infografía Delitos Económicos en el Ámbito de la Empresa"
+                            onclick="openInfographicModal()"
+                            onerror="handleInfographicError(this)"
+                            class="w-full h-auto object-contain block cursor-zoom-in"
+                        />
+                        <div id="github-infographic-fallback" class="hidden p-4 bg-[#f6f3eb] text-slate-800 space-y-2.5 text-xs">
+                            <div class="text-center font-serif font-black text-sm text-navy-900 border-b border-slate-300 pb-2">
+                                DELITOS ECONÓMICOS EN EL ÁMBITO DE LA EMPRESA
+                            </div>
+                            <div class="bg-white p-2.5 rounded-xl border border-slate-200">
+                                <strong class="text-navy-900 block">I. MARCO NORMATIVO (LOCDOFT, CP, GAFI)</strong>
+                                <span>LOCDOFT, Código Penal (CP) y Recomendaciones del GAFI.</span>
+                            </div>
+                            <div class="bg-white p-2.5 rounded-xl border border-slate-200">
+                                <strong class="text-navy-900 block">II. EVOLUCIÓN DEL DELITO EN LA EMPRESA</strong>
+                                <span>Fraude inicial básico → Proceso complejo estructurado → Impacto financiero global.</span>
+                            </div>
+                            <div class="bg-white p-2.5 rounded-xl border border-slate-200">
+                                <strong class="text-navy-900 block">III. DELINCUENCIA ORGANIZADA, ASOCIACIÓN, LEGITIMACIÓN Y AGAVILLAMIENTO</strong>
+                                <span>Estructura criminal, unión permanente, apariencia legal a fondos ilícitos y concierto planificado.</span>
+                            </div>
+                            <div class="bg-white p-2.5 rounded-xl border border-slate-200">
+                                <strong class="text-navy-900 block">IV. FINANCIAMIENTO AL TERRORISMO</strong>
+                                <span>Nexos con el crimen organizado, canales financieros ilícitos y responsabilidad de la empresa.</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <div id="mobile-quiz-score" class="hidden p-4 rounded-xl bg-navy-900 text-white text-center space-y-2">
-                        <div class="text-xs uppercase font-bold text-amber-300">Puntuación Final</div>
-                        <div id="mobile-score-val" class="text-lg font-extrabold"></div>
-                        <button onclick="resetMobileQuiz()" class="px-4 py-2 rounded-lg bg-gold-500 text-navy-950 text-xs font-extrabold cursor-pointer">
-                            Volver a intentar
+                    <div class="flex items-center justify-between text-[11px] text-slate-500 pt-0.5">
+                <!-- Material Audiovisual Relacionado (Video de WhatsApp en GitHub) -->
+                <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex items-start justify-between gap-2 border-b border-slate-100 pb-2.5">
+                        <div>
+                            <span class="inline-flex items-center space-x-1 text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded bg-navy-900 text-amber-300">
+                                <span>🎬 Recurso Multimedia • GitHub</span>
+                            </span>
+                            <h3 class="font-serif text-base font-bold text-navy-900 mt-1 leading-snug mobile-title">
+                                Material Audiovisual Relacionado
+                            </h3>
+                        </div>
+                    </div>
+
+                    <!-- Contextualización jurídica y corporativa -->
+                    <div class="bg-slate-50 rounded-xl p-3 border border-slate-200/80 space-y-1.5">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-gold-600 block">
+                            Vinculación Práctica con la Exposición
+                        </span>
+                        <p class="text-xs text-slate-700 leading-relaxed mobile-text">
+                            Este material audiovisual ilustra en la práctica cómo operan los <strong>delitos económicos dentro de la estructura empresarial</strong>, mostrando la delgada línea entre la gestión mercantil lícita y la instrumentalización societaria para la <strong>legitimación de capitales</strong>.
+                        </p>
+                        <p class="text-xs text-slate-700 leading-relaxed mobile-text">
+                            Refuerza la importancia del <strong>cumplimiento normativo (Compliance)</strong> exigido por las <strong>Recomendaciones del GAFI</strong> y la <strong>LOCDOFT</strong> (debida diligencia, identificación del beneficiario final y reporte de operaciones sospechosas) para evitar la <strong>responsabilidad penal de la empresa</strong> y sus directivos.
+                        </p>
+                    </div>
+
+                    <!-- Reproductor HTML5 para WhatsApp Video 2026-11-21 at 19.27.44.mp4 en el repositorio de GitHub -->
+                    <div class="relative rounded-2xl overflow-hidden border border-slate-300 bg-navy-950 shadow-inner">
+                        <video
+                            id="github-whatsapp-video"
+                            controls
+                            playsinline
+                            preload="metadata"
+                            class="w-full max-h-[420px] bg-navy-950 block"
+                            onerror="handleVideoError()"
+                        >
+                            <source id="github-video-source" src="./WhatsApp%20Video%202026-11-21%20at%2019.27.44.mp4" type="video/mp4" />
+                            Tu navegador no soporta la reproducción de video HTML5.
+                        </video>
+
+                        <!-- Aviso de respaldo si el archivo tarda o requiere ajustar la ruta raw en GitHub -->
+                        <div id="github-video-fallback" class="hidden p-4 bg-navy-900 text-white text-xs space-y-2.5 border-t border-slate-800">
+                            <div class="font-bold text-amber-300">
+                                ⚠️ No se pudo cargar el video automáticamente desde la ruta actual.
+                            </div>
+                            <p class="text-slate-300 leading-relaxed">
+                                Verifica que <span class="font-mono text-amber-200">WhatsApp Video 2026-11-21 at 19.27.44.mp4</span> esté en la raíz del repositorio o ingresa la URL directa (<span class="font-mono">raw.githubusercontent.com</span>):
+                            </p>
+                            <div class="space-y-1.5">
+                                <input
+                                    id="custom-github-video-url"
+                                    type="url"
+                                    placeholder="https://raw.githubusercontent.com/usuario/repo/main/WhatsApp%20Video%202026-11-21%20at%2019.27.44.mp4"
+                                    class="w-full px-3 py-2 rounded-xl bg-navy-950 border border-slate-700 text-white text-xs focus:outline-none focus:border-gold-500"
+                                />
+                                <button
+                                    onclick="applyCustomVideoUrl()"
+                                    type="button"
+                                    class="w-full py-2.5 px-3 rounded-xl bg-gold-500 active:bg-amber-600 text-navy-950 font-extrabold text-xs cursor-pointer"
+                                >
+                                    Cargar URL del Video
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between text-[11px] text-slate-500 pt-0.5 gap-2">
+                        <span id="active-video-path" class="font-mono truncate">./WhatsApp%20Video%202026-11-21%20at%2019.27.44.mp4</span>
+                        <button onclick="resetDefaultVideoUrl()" type="button" class="font-bold text-navy-900 underline cursor-pointer shrink-0">
+                            Restablecer ruta
                         </button>
                     </div>
                 </div>
@@ -496,7 +599,7 @@
                     <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
-                    <span class="text-[10px] leading-none">TSJ & Quiz</span>
+                    <span class="text-[10px] leading-none">TSJ & Medios</span>
                 </button>
             </div>
         </nav>
@@ -510,24 +613,32 @@
                 <div class="sticky top-0 z-10 bg-navy-900 text-white px-4 py-3 flex items-center justify-between border-b-2 border-gold-500">
                     <div>
                         <span class="text-[10px] uppercase font-bold text-amber-300 block">Esquema Visual Completo</span>
-                        <h3 class="font-serif text-sm font-bold">Infografía de la Exposición</h3>
+                        <h3 class="font-serif text-sm font-bold">Infografía (1795268791064.jpg)</h3>
                     </div>
                     <button onclick="closeInfographicModal()" class="h-9 px-3 rounded-xl bg-red-600 text-white text-xs font-extrabold flex items-center space-x-1 cursor-pointer">
                         <span>Cerrar ✕</span>
                     </button>
                 </div>
 
-                <!-- Contenido vertical replicando fielmente la infografía adjunta -->
+                <!-- Contenido vertical con la imagen 1795268791064.jpg y síntesis de respaldo -->
                 <div class="p-4 space-y-4 text-slate-800">
-                    <div class="text-center bg-white rounded-2xl p-4 border border-slate-300 shadow-sm">
-                        <div class="flex justify-center space-x-3 text-navy-900 mb-1">
-                            <span>⚖️</span>
-                            <span>🏢</span>
+                    <div class="bg-white rounded-2xl p-3 border border-slate-300 shadow-sm space-y-2">
+                        <div class="flex items-center justify-between text-[11px] text-slate-500 font-semibold">
+                            <span>Ismael Zambrano • C.I. 13.528.514</span>
+                            <button onclick="toggleModalZoom()" id="btn-modal-zoom" type="button" class="px-2.5 py-1 rounded-lg bg-navy-900 text-amber-300 font-bold cursor-pointer">
+                                Zoom 1.4x
+                            </button>
                         </div>
-                        <h4 class="font-serif text-base font-black text-navy-900 leading-tight">
-                            DELITOS ECONÓMICOS EN EL ÁMBITO DE LA EMPRESA
-                        </h4>
-                        <p class="text-[11px] text-slate-500 mt-1 font-semibold">Ismael Zambrano • C.I. 13.528.514</p>
+                        <div class="overflow-auto rounded-xl border border-slate-200 bg-slate-100">
+                            <img
+                                id="github-infographic-modal"
+                                src="1795268791064.jpg"
+                                data-github-src="https://raw.githubusercontent.com/ismaelzambrano/delitos-economicos-empresa/main/1795268791064.jpg"
+                                alt="Infografía Completa Delitos Económicos en el Ámbito de la Empresa"
+                                onerror="handleInfographicModalError(this)"
+                                class="w-full h-auto object-contain block transition-transform duration-200 origin-top"
+                            />
+                        </div>
                     </div>
 
                     <!-- Bloque I Infografía -->
@@ -667,18 +778,219 @@
             {
                 id: 'n7',
                 group: 'gafi',
-                tag: 'Estándares Internacionales',
-                title: 'Recomendaciones del GAFI',
-                text: 'Reglas del Grupo de Acción Financiera Internacional contra el lavado de activos, el financiamiento al terrorismo y el financiamiento de la proliferación de armas de destrucción masiva. Exigen a los Estados tipificar estos delitos, aplicar medidas de debida diligencia a los sujetos obligados, identificar beneficiarios finales y mantener cooperación internacional.'
+                tag: 'Estándares Internacionales • 40 Recomendaciones',
+                title: 'Recomendaciones del GAFI (7 Bloques Temáticos)',
+                text: 'Reglas del Grupo de Acción Financiera Internacional contra el lavado de activos, el financiamiento al terrorismo y el financiamiento de la proliferación de armas de destrucción masiva. Exigen a los Estados tipificar estos delitos, aplicar medidas de debida diligencia a los sujetos obligados, identificar beneficiarios finales y mantener cooperación internacional.',
+                isGafiMaster: true
             }
         ];
+
+        // 7 GRANDES BLOQUES TEMÁTICOS DE LAS RECOMENDACIONES DEL GAFI
+        const gafiBlocksData = [
+            {
+                id: 'gafi-b1',
+                range: 'R. 1 – 2',
+                title: '1. Políticas y coordinación',
+                intro: '',
+                points: [
+                    {
+                        label: 'Enfoque Basado en Riesgo (R. 1):',
+                        detail: 'Los países e instituciones deben identificar, evaluar y entender sus riesgos particulares para aplicar medidas proporcionales (más estrictas donde hay mayor riesgo, simplificadas donde es bajo).'
+                    },
+                    {
+                        label: 'Cooperación nacional (R. 2):',
+                        detail: 'Coordinación interna entre autoridades financieras, policiales, unidades de inteligencia y supervisores.'
+                    }
+                ]
+            },
+            {
+                id: 'gafi-b2',
+                range: 'R. 3 – 4',
+                title: '2. Lavado de activos y decomiso',
+                intro: '',
+                points: [
+                    {
+                        label: 'Tipificación del delito (R. 3):',
+                        detail: 'Penalizar el lavado de activos abarcando la gama más amplia posible de delitos determinantes (narcotráfico, corrupción, fraude, etc.).'
+                    },
+                    {
+                        label: 'Decomiso (R. 4):',
+                        detail: 'Contar con mecanismos legales para congelar, incautar y decomisar bienes ilícitos, incluyendo opciones de decomiso sin condena penal previa cuando corresponda.'
+                    }
+                ]
+            },
+            {
+                id: 'gafi-b3',
+                range: 'R. 5 – 8',
+                title: '3. Financiamiento del terrorismo y de la proliferación',
+                intro: '',
+                points: [
+                    {
+                        label: 'Delito y sanciones dirigidas (R. 5 – 7):',
+                        detail: 'Tipificar el financiamiento al terrorismo y congelar sin demora los activos de personas o entidades designadas por el Consejo de Seguridad de la ONU (incluyendo proliferación de armas de destrucción masiva).'
+                    },
+                    {
+                        label: 'Organizaciones sin fines de lucro (R. 8):',
+                        detail: 'Proteger a las ONG vulnerables para que no sean utilizadas como fachada o desvío de fondos hacia grupos terroristas, sin obstaculizar su labor legítima.'
+                    }
+                ]
+            },
+            {
+                id: 'gafi-b4',
+                range: 'R. 9 – 23',
+                title: '4. Medidas preventivas',
+                intro: 'Es el corazón operativo para bancos, financieras y sectores obligados:',
+                points: [
+                    {
+                        label: 'Secreto bancario (R. 9):',
+                        detail: 'No debe ser un obstáculo para investigar o aplicar estas normas.'
+                    },
+                    {
+                        label: 'Debida Diligencia del Cliente - DDC (R. 10 – 11):',
+                        detail: 'Prohibición de cuentas anónimas, obligación de verificar la identidad real del cliente y conservar registros por al menos 5 años.'
+                    },
+                    {
+                        label: 'Medidas reforzadas (R. 12 – 16):',
+                        detail: 'Controles estrictos para Personas Expuestas Políticamente (PEP), banca corresponsal, remesas, transferencias electrónicas y activos virtuales/criptomonedas (R. 15).'
+                    },
+                    {
+                        label: 'Reporte de Operaciones Sospechosas - ROS (R. 20 – 21):',
+                        detail: 'Obligación de reportar de inmediato cualquier transacción sospechosa a la Unidad de Inteligencia Financiera (UIF), con prohibición absoluta de avisar al cliente (tipping-off).'
+                    },
+                    {
+                        label: 'Sectores no financieros - APNFD (R. 22 – 23):',
+                        detail: 'Extiende las obligaciones de control a casinos, agentes inmobiliarios, comerciantes de metales/piedras preciosas, abogados, notarios y contadores.'
+                    }
+                ]
+            },
+            {
+                id: 'gafi-b5',
+                range: 'R. 24 – 25',
+                title: '5. Transparencia y beneficiario final',
+                intro: '',
+                points: [
+                    {
+                        label: 'Beneficiario Final:',
+                        detail: 'Evitar el uso indebido de empresas fachada y fideicomisos. Exige que las autoridades tengan acceso oportuno y veraz a la identidad del beneficiario final (la persona natural que realmente controla o se beneficia de una sociedad o estructura jurídica).'
+                    }
+                ]
+            },
+            {
+                id: 'gafi-b6',
+                range: 'R. 26 – 35',
+                title: '6. Facultades y responsabilidades de las autoridades',
+                intro: '',
+                points: [
+                    {
+                        label: 'Supervisión, UIF y Sanciones:',
+                        detail: 'Define el rol y las facultades de los entes supervisores (R. 26–28), crea y protege la autonomía operativa de las Unidades de Inteligencia Financiera (R. 29), regula las investigaciones policiales (R. 30–31), controla el transporte transfronterizo de efectivo (R. 32) y exige sanciones proporcionales y disuasivas por incumplimiento (R. 35).'
+                    }
+                ]
+            },
+            {
+                id: 'gafi-b7',
+                range: 'R. 36 – 40',
+                title: '7. Cooperación internacional',
+                intro: '',
+                points: [
+                    {
+                        label: 'Instrumentos y Extradición:',
+                        detail: 'Ratificación de convenciones internacionales (Viena, Palermo, Mérida), asistencia legal mutua ágil, ejecución de órdenes extranjeras de congelamiento/decomiso, extradición (R. 39) e intercambio directo de inteligencia entre homólogos (R. 40).'
+                    }
+                ]
+            }
+        ];
+
+        let allGafiExpanded = false;
+
+        function renderGafiSubAccordions() {
+            return `
+                <div class="mt-3 pt-3 border-t border-slate-200 space-y-2.5">
+                    <div class="flex items-center justify-between gap-2 bg-amber-50/90 border border-amber-200 rounded-xl px-3 py-2">
+                        <div>
+                            <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-800 block">Estructura GAFI</span>
+                            <span class="text-xs font-bold text-navy-900">7 Grandes Bloques Temáticos</span>
+                        </div>
+                        <button onclick="toggleAllGafiBlocks()" id="btn-toggle-all-gafi" class="px-2.5 py-1.5 rounded-lg bg-navy-900 active:bg-navy-800 text-amber-300 text-[11px] font-extrabold shrink-0 transition cursor-pointer">
+                            ${allGafiExpanded ? 'Contraer todos' : 'Expandir todos'}
+                        </button>
+                    </div>
+
+                    <div class="space-y-2">
+                        ${gafiBlocksData.map((blk, bIdx) => {
+                            const isBlkOpen = allGafiExpanded || bIdx === 0;
+                            return `
+                                <div class="rounded-xl border border-slate-200 bg-slate-50/70 overflow-hidden">
+                                    <button onclick="toggleGafiBlock('${blk.id}')" class="w-full p-3 text-left flex items-center justify-between gap-2 active:bg-slate-100 transition cursor-pointer">
+                                        <div class="min-w-0">
+                                            <span class="inline-block text-[10px] font-extrabold px-2 py-0.5 rounded bg-gold-500/20 text-amber-900 border border-amber-400/40 mb-1">
+                                                ${blk.range}
+                                            </span>
+                                            <h4 class="text-xs font-extrabold text-navy-900 leading-snug mobile-text">
+                                                ${blk.title}
+                                            </h4>
+                                        </div>
+                                        <span id="gafi-icon-${blk.id}" class="w-6 h-6 rounded-full bg-white border border-slate-200 text-navy-900 flex items-center justify-center font-black text-xs shrink-0">
+                                            ${isBlkOpen ? '−' : '+'}
+                                        </span>
+                                    </button>
+                                    <div id="gafi-body-${blk.id}" class="gafi-block-body ${isBlkOpen ? '' : 'hidden'} px-3 pb-3 pt-2 bg-white border-t border-slate-200/80 space-y-2 text-xs text-slate-700 leading-relaxed mobile-text">
+                                        ${blk.intro ? `<p class="font-semibold text-navy-900 bg-slate-100 px-2.5 py-1.5 rounded-lg">${blk.intro}</p>` : ''}
+                                        <div class="space-y-2">
+                                            ${blk.points.map(pt => `
+                                                <div class="flex items-start space-x-2">
+                                                    <span class="text-gold-600 font-extrabold mt-0.5 shrink-0">•</span>
+                                                    <div>
+                                                        <strong class="text-navy-900">${pt.label}</strong>
+                                                        <span> ${pt.detail}</span>
+                                                    </div>
+                                                </div>
+                                            `).join('')}
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function toggleGafiBlock(id) {
+            const body = document.getElementById(`gafi-body-${id}`);
+            const icon = document.getElementById(`gafi-icon-${id}`);
+            const isHidden = body.classList.contains('hidden');
+            body.classList.toggle('hidden');
+            icon.textContent = isHidden ? '−' : '+';
+        }
+
+        function toggleAllGafiBlocks() {
+            allGafiExpanded = !allGafiExpanded;
+            gafiBlocksData.forEach(blk => {
+                const body = document.getElementById(`gafi-body-${blk.id}`);
+                const icon = document.getElementById(`gafi-icon-${blk.id}`);
+                if (body && icon) {
+                    if (allGafiExpanded) {
+                        body.classList.remove('hidden');
+                        icon.textContent = '−';
+                    } else {
+                        body.classList.add('hidden');
+                        icon.textContent = '+';
+                    }
+                }
+            });
+            const btn = document.getElementById('btn-toggle-all-gafi');
+            if (btn) {
+                btn.textContent = allGafiExpanded ? 'Contraer todos' : 'Expandir todos';
+            }
+        }
 
         function renderNormsAccordion(filter = 'all') {
             const container = document.getElementById('norms-accordion-list');
             const items = filter === 'all' ? normsData : normsData.filter(i => i.group === filter);
 
             container.innerHTML = items.map((item, idx) => {
-                const isOpen = idx === 0; // El primero abierto por defecto para lectura inmediata
+                const isOpen = idx === 0 || filter === 'gafi';
                 return `
                     <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
                         <button onclick="toggleNormAccordion('${item.id}')" class="w-full p-4 text-left flex items-center justify-between gap-2 active:bg-slate-50 transition cursor-pointer">
@@ -695,7 +1007,8 @@
                             </span>
                         </button>
                         <div id="acc-body-${item.id}" class="${isOpen ? '' : 'hidden'} px-4 pb-4 pt-2 border-t border-slate-100 text-xs text-slate-700 leading-relaxed mobile-text">
-                            ${item.text}
+                            <p>${item.text}</p>
+                            ${item.isGafiMaster ? renderGafiSubAccordions() : ''}
                         </div>
                     </div>
                 `;
@@ -842,103 +1155,43 @@
             icon.textContent = hidden ? '−' : '+';
         }
 
-        // 5. QUIZ INTERACTIVO MÓVIL
-        const mobileQuizData = [
-            {
-                q: '1. ¿Cuál es la diferencia clave en el origen de los fondos entre Legitimación de Capitales y Financiamiento al Terrorismo?',
-                opts: [
-                    'En el financiamiento al terrorismo los fondos pueden ser ilícitos o lícitos (donaciones, comercios), importando su destino terrorista.',
-                    'Ambos delitos exigen exclusivamente fondos provenientes del narcotráfico.',
-                    'La legitimación de capitales solo usa dinero lícito.'
-                ],
-                ans: 0,
-                exp: '¡Correcto! En el financiamiento al terrorismo el foco está en el destino o uso terrorista, sin importar si el dinero nació lícito o ilícito.'
-            },
-            {
-                q: '2. ¿Qué artículo de la LOCDOFT sanciona el solo hecho de formar parte de un grupo de delincuencia organizada?',
-                opts: [
-                    'Artículo 286 (Agavillamiento)',
-                    'Artículo 37 (Asociación)',
-                    'Artículo 52 (Terrorismo)'
-                ],
-                ans: 1,
-                exp: '¡Exacto! El Art. 37 de la LOCDOFT tipifica la Asociación dentro de la delincuencia organizada.'
-            },
-            {
-                q: '3. Según el Art. 4, numeral 9 LOCDOFT, ¿puede configurarse delincuencia organizada con una sola persona?',
-                opts: [
-                    'No, exige al menos cinco personas físicas.',
-                    'Sí, cuando actúa como órgano de una persona jurídica o asociativa para cometer delitos graves.',
-                    'Solo en delitos culposos.'
-                ],
-                ans: 1,
-                exp: '¡Muy bien! La ley prevé expresamente la actuación de una sola persona como órgano de una persona jurídica o asociativa.'
-            },
-            {
-                q: '4. ¿Qué establece la Sentencia N° 6 de la Sala de Casación Penal del TSJ (17/03/2021)?',
-                opts: [
-                    'Se avoca de oficio e interpreta los elementos y el alcance del delito de legitimación de capitales bajo la LOCDOFT.',
-                    'Elimina las recomendaciones del GAFI en Venezuela.',
-                    'Deroga el Art. 286 del Código Penal.'
-                ],
-                ans: 0,
-                exp: '¡Correcto! Interpreta los elementos constitutivos y alcance de la legitimación de capitales en la LOCDOFT.'
+        // Manejo de carga y respaldo de la imagen 1795268791064.jpg
+        function handleInfographicError(imgEl) {
+            if (!imgEl.dataset.triedGithub && imgEl.dataset.githubSrc) {
+                imgEl.dataset.triedGithub = 'true';
+                imgEl.src = imgEl.dataset.githubSrc;
+                return;
             }
-        ];
-
-        let mobileAnswers = {};
-
-        function renderMobileQuiz() {
-            const list = document.getElementById('mobile-quiz-list');
-            list.innerHTML = mobileQuizData.map((item, qIdx) => {
-                const answered = mobileAnswers[qIdx] !== undefined;
-                return `
-                    <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
-                        <p class="text-xs font-bold text-navy-900 leading-snug mobile-text">${item.q}</p>
-                        <div class="space-y-1.5">
-                            ${item.opts.map((opt, oIdx) => {
-                                let cls = 'bg-white border-slate-200 text-slate-700';
-                                if (answered) {
-                                    if (oIdx === item.ans) cls = 'bg-emerald-50 border-emerald-500 text-emerald-900 font-bold';
-                                    else if (oIdx === mobileAnswers[qIdx]) cls = 'bg-red-50 border-red-400 text-red-800';
-                                    else cls = 'bg-white border-slate-200 text-slate-400 opacity-60';
-                                }
-                                return `
-                                    <button onclick="answerMobileQuiz(${qIdx}, ${oIdx})" ${answered ? 'disabled' : ''} class="w-full text-left p-2.5 rounded-xl border text-xs leading-snug transition cursor-pointer ${cls}">
-                                        ${opt}
-                                    </button>
-                                `;
-                            }).join('')}
-                        </div>
-                        ${answered ? `
-                            <div class="p-2.5 rounded-lg text-[11px] leading-snug ${mobileAnswers[qIdx] === item.ans ? 'bg-emerald-100 text-emerald-950' : 'bg-amber-100 text-amber-950'}">
-                                ${item.exp}
-                            </div>
-                        ` : ''}
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function answerMobileQuiz(qIdx, oIdx) {
-            if (mobileAnswers[qIdx] !== undefined) return;
-            mobileAnswers[qIdx] = oIdx;
-            renderMobileQuiz();
-
-            if (Object.keys(mobileAnswers).length === mobileQuizData.length) {
-                const score = mobileQuizData.reduce((acc, q, idx) => acc + (mobileAnswers[idx] === q.ans ? 1 : 0), 0);
-                document.getElementById('mobile-score-val').textContent = `${score} de ${mobileQuizData.length} correctas`;
-                document.getElementById('mobile-quiz-score').classList.remove('hidden');
+            imgEl.classList.add('hidden');
+            const fallback = document.getElementById('github-infographic-fallback');
+            if (fallback) {
+                fallback.classList.remove('hidden');
             }
         }
 
-        function resetMobileQuiz() {
-            mobileAnswers = {};
-            document.getElementById('mobile-quiz-score').classList.add('hidden');
-            renderMobileQuiz();
+        function handleInfographicModalError(imgEl) {
+            if (!imgEl.dataset.triedGithub && imgEl.dataset.githubSrc) {
+                imgEl.dataset.triedGithub = 'true';
+                imgEl.src = imgEl.dataset.githubSrc;
+                return;
+            }
+            imgEl.alt = 'Infografía no disponible en ruta directa; revise la síntesis estructurada debajo.';
         }
 
-        // 6. NAVEGACIÓN INFERIOR MÓVIL, TAMAÑO DE FUENTE Y MODAL
+        let modalZoomed = false;
+        function toggleModalZoom() {
+            modalZoomed = !modalZoomed;
+            const img = document.getElementById('github-infographic-modal');
+            const btn = document.getElementById('btn-modal-zoom');
+            if (img) {
+                img.style.transform = modalZoomed ? 'scale(1.4)' : 'scale(1)';
+            }
+            if (btn) {
+                btn.textContent = modalZoomed ? 'Zoom 1.0x' : 'Zoom 1.4x';
+            }
+        }
+
+        // 5. NAVEGACIÓN INFERIOR MÓVIL, TAMAÑO DE FUENTE Y MODAL
         function switchMobileTab(tabNumber) {
             for (let i = 1; i <= 5; i++) {
                 const panel = document.getElementById(`tab-${i}`);
@@ -970,15 +1223,63 @@
         }
 
         function closeInfographicModal() {
+            modalZoomed = false;
+            const img = document.getElementById('github-infographic-modal');
+            const btn = document.getElementById('btn-modal-zoom');
+            if (img) img.style.transform = 'scale(1)';
+            if (btn) btn.textContent = 'Zoom 1.4x';
             document.getElementById('infographic-modal').classList.add('hidden');
             document.body.style.overflow = '';
+        }
+
+        // Control y respaldo para el video local subido a GitHub
+        const DEFAULT_GH_VIDEO_URL = './WhatsApp%20Video%202026-11-21%20at%2019.27.44.mp4';
+
+        function handleVideoError() {
+            const fallback = document.getElementById('github-video-fallback');
+            if (fallback) {
+                fallback.classList.remove('hidden');
+            }
+        }
+
+        function applyCustomVideoUrl() {
+            const input = document.getElementById('custom-github-video-url');
+            const video = document.getElementById('github-whatsapp-video');
+            const source = document.getElementById('github-video-source');
+            const pathLabel = document.getElementById('active-video-path');
+            const fallback = document.getElementById('github-video-fallback');
+
+            if (!input || !video || !source) return;
+            const rawUrl = input.value.trim();
+            if (!rawUrl) return;
+
+            const encodedUrl = encodeURI(rawUrl);
+            source.src = encodedUrl;
+            video.load();
+            if (pathLabel) pathLabel.textContent = encodedUrl;
+            if (fallback) fallback.classList.add('hidden');
+        }
+
+        function resetDefaultVideoUrl() {
+            const video = document.getElementById('github-whatsapp-video');
+            const source = document.getElementById('github-video-source');
+            const pathLabel = document.getElementById('active-video-path');
+            const fallback = document.getElementById('github-video-fallback');
+            const input = document.getElementById('custom-github-video-url');
+
+            if (source && video) {
+                source.src = DEFAULT_GH_VIDEO_URL;
+                video.load();
+            }
+            if (pathLabel) pathLabel.textContent = DEFAULT_GH_VIDEO_URL;
+            if (input) input.value = '';
+            if (fallback) fallback.classList.add('hidden');
         }
 
         // Inicialización
         window.addEventListener('DOMContentLoaded', () => {
             renderNormsAccordion('all');
             selectEvoPhase(0);
-            renderMobileQuiz();
         });
     </script>
 </body>
