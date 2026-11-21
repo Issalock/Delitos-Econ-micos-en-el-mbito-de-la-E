@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Delitos Económicos en la Empresa | Ismael Zambrano</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Merriweather y Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Merriweather', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            950: '#080e1d',
+                            900: '#0F172A',
+                            800: '#1E293B',
+                            700: '#334155',
+                        },
+                        gold: {
+                            500: '#D97706',
+                            600: '#B45309',
+                            100: '#FEF3C7',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Evitar desbordamiento horizontal y mejorar sensación táctil móvil */
+        html, body {
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+            background-color: #cbd5e1;
+        }
+        @media (max-width: 440px) {
+            html, body {
+                background-color: #f8fafc;
+            }
+        }
+
+        /* Escala de fuente accesible para lectura en teléfono */
+        body.large-font {
+            font-size: 17px;
+        }
+        body.large-font .mobile-text {
+            font-size: 0.98rem !important;
+            line-height: 1.55 !important;
+        }
+        body.large-font .mobile-title {
+            font-size: 1.25rem !important;
+        }
+
+        /* Animación suave de cambio de pestaña */
+        .tab-panel {
+            animation: slideUp 0.25s ease-out;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Ocultar scrollbar manteniendo desplazamiento */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 antialiased selection:bg-navy-900 selection:text-white">
+
+    <!-- CONTENEDOR PRINCIPAL TIPO SMARTPHONE (MAX 430PX CENTRADO) -->
+    <div id="app-shell" class="max-w-[430px] mx-auto min-h-screen bg-slate-50 shadow-2xl relative pb-24 flex flex-col border-x border-slate-200/80">
+
+        <!-- =================================================================
+             HEADER COMPACTO MÓVIL (STICKY TOP)
+        ================================================================== -->
+        <header class="sticky top-0 z-30 bg-navy-900 text-white px-4 pt-3.5 pb-3 border-b-2 border-gold-500 shadow-md">
+            <div class="flex items-start justify-between gap-2">
+                <div class="min-w-0 flex-1">
+                    <div class="flex items-center space-x-1.5 mb-1">
+                        <span class="inline-block w-2 h-2 rounded-full bg-gold-500"></span>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-amber-300 truncate">
+                            Exposición Jurídica • UBV
+                        </span>
+                    </div>
+                    <h1 class="font-serif text-base font-black leading-snug text-white">
+                        Delitos Económicos en el Ámbito de la Empresa
+                    </h1>
+                </div>
+
+                <!-- Botones táctiles superiores: Tamaño de texto e Infografía -->
+                <div class="flex items-center space-x-1.5 shrink-0 pt-0.5">
+                    <button onclick="toggleFontSize()" id="btn-font" class="h-9 px-2.5 rounded-xl bg-navy-800 active:bg-navy-700 border border-slate-700 text-slate-200 text-xs font-extrabold flex items-center justify-center transition cursor-pointer" title="Cambiar tamaño de letra">
+                        A+
+                    </button>
+                    <button onclick="openInfographicModal()" class="h-9 px-2.5 rounded-xl bg-gold-500 active:bg-amber-600 text-navy-950 text-xs font-extrabold flex items-center space-x-1 shadow transition cursor-pointer" title="Ver Infografía Vertical">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
+                        </svg>
+                        <span>Infografía</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chip de Identificación del Participante -->
+            <div class="mt-2.5 pt-2 border-t border-slate-800 flex items-center justify-between text-[11px]">
+                <div class="flex items-center space-x-1.5 text-slate-200 font-semibold truncate">
+                    <span class="bg-amber-500/20 text-amber-300 px-1.5 py-0.5 rounded font-bold text-[10px]">PARTICIPANTE</span>
+                    <span class="truncate">ISMAEL ZAMBRANO</span>
+                </div>
+                <span class="font-mono text-amber-300 bg-navy-950/80 px-2 py-0.5 rounded border border-slate-800 shrink-0">
+                    C.I. 13.528.514
+                </span>
+            </div>
+        </header>
+
+        <!-- =================================================================
+             CONTENIDO PRINCIPAL (VISTAS POR PESTAÑA MÓVIL)
+        ================================================================== -->
+        <main class="flex-1 px-4 pt-4 pb-6">
+
+            <!-- -------------------------------------------------------------
+                 PESTAÑA 1: I. MARCO NORMATIVO Y CONCEPTOS (ACORDEONES)
+            -------------------------------------------------------------- -->
+            <section id="tab-1" class="tab-panel space-y-4">
+                <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm">
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-gold-600">Sección I • Fundamentos</span>
+                    <h2 class="font-serif text-lg font-bold text-navy-900 mt-0.5 mobile-title">
+                        Marco Normativo y Conceptos
+                    </h2>
+                    <p class="text-xs text-slate-600 mt-1 leading-relaxed mobile-text">
+                        Eje central entre la <strong>LOCDOFT</strong>, el <strong>Código Penal</strong> y los estándares del <strong>GAFI</strong> en las empresas. Toca cada norma para desplegar:
+                    </p>
+
+                    <!-- Filtros rápidos táctiles -->
+                    <div class="flex space-x-1.5 mt-3 overflow-x-auto no-scrollbar pb-0.5">
+                        <button onclick="filterNorms('all')" id="nf-all" class="norm-filter px-3 py-1.5 rounded-full text-xs font-bold bg-navy-900 text-white shrink-0 cursor-pointer">
+                            Todos (7)
+                        </button>
+                        <button onclick="filterNorms('locdoft')" id="nf-locdoft" class="norm-filter px-3 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 shrink-0 cursor-pointer">
+                            LOCDOFT (5)
+                        </button>
+                        <button onclick="filterNorms('cp')" id="nf-cp" class="norm-filter px-3 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 shrink-0 cursor-pointer">
+                            Código Penal
+                        </button>
+                        <button onclick="filterNorms('gafi')" id="nf-gafi" class="norm-filter px-3 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 shrink-0 cursor-pointer">
+                            GAFI
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Contenedor de Acordeones Normativos -->
+                <div id="norms-accordion-list" class="space-y-2.5">
+                    <!-- Inyectado dinámicamente vía JS -->
+                </div>
+            </section>
+
+            <!-- -------------------------------------------------------------
+                 PESTAÑA 2: II. EVOLUCIÓN DEL DELITO EN LA EMPRESA
+            -------------------------------------------------------------- -->
+            <section id="tab-2" class="tab-panel hidden space-y-4">
+                <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm">
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-gold-600">Sección II • Escalamiento</span>
+                    <h2 class="font-serif text-lg font-bold text-navy-900 mt-0.5 mobile-title">
+                        Evolución del Delito en la Empresa
+                    </h2>
+                    <p class="text-xs text-slate-600 mt-1 leading-relaxed mobile-text">
+                        Un delito económico de alto impacto escala progresivamente aprovechando la estructura corporativa:
+                    </p>
+
+                    <!-- Síntesis Visual de la Infografía (3 bloques compactos) -->
+                    <div class="mt-3 bg-navy-900 text-white rounded-xl p-3">
+                        <div class="text-[10px] uppercase font-bold text-amber-300 tracking-wider text-center mb-2">
+                            Ruta de Transformación (Infografía)
+                        </div>
+                        <div class="grid grid-cols-3 gap-1.5 text-center items-center">
+                            <div class="bg-navy-800 rounded-lg p-2 border border-slate-700">
+                                <div class="text-base mb-0.5">💼</div>
+                                <div class="text-[10px] font-bold leading-tight">Fraude inicial básico</div>
+                            </div>
+                            <div class="bg-navy-800 rounded-lg p-2 border border-slate-700">
+                                <div class="text-base mb-0.5">🏢</div>
+                                <div class="text-[10px] font-bold leading-tight">Proceso complejo estructurado</div>
+                            </div>
+                            <div class="bg-gold-500/20 rounded-lg p-2 border border-amber-400/50">
+                                <div class="text-base mb-0.5">🌐</div>
+                                <div class="text-[10px] font-bold text-amber-300 leading-tight">Impacto financiero global</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Selector Paso a Paso de las 4 Fases -->
+                <div class="grid grid-cols-4 gap-1.5">
+                    <button onclick="selectEvoPhase(0)" id="evo-pill-0" class="evo-pill py-2.5 px-1 rounded-xl text-center font-bold text-xs bg-navy-900 text-white shadow cursor-pointer">
+                        Fase 1
+                    </button>
+                    <button onclick="selectEvoPhase(1)" id="evo-pill-1" class="evo-pill py-2.5 px-1 rounded-xl text-center font-bold text-xs bg-white text-slate-700 border border-slate-200 cursor-pointer">
+                        Fase 2
+                    </button>
+                    <button onclick="selectEvoPhase(2)" id="evo-pill-2" class="evo-pill py-2.5 px-1 rounded-xl text-center font-bold text-xs bg-white text-slate-700 border border-slate-200 cursor-pointer">
+                        Fase 3
+                    </button>
+                    <button onclick="selectEvoPhase(3)" id="evo-pill-3" class="evo-pill py-2.5 px-1 rounded-xl text-center font-bold text-xs bg-white text-slate-700 border border-slate-200 cursor-pointer">
+                        Fase 4
+                    </button>
+                </div>
+
+                <!-- Tarjeta Detallada de la Fase Activa -->
+                <div id="evo-mobile-card" class="bg-white rounded-2xl p-5 border-2 border-navy-900/15 shadow-sm space-y-3">
+                    <!-- Renderizado por JS -->
+                </div>
+
+                <!-- Botones táctiles Anterior / Siguiente -->
+                <div class="flex items-center justify-between gap-3">
+                    <button onclick="stepEvoPhase(-1)" id="evo-prev-btn" class="flex-1 py-3 rounded-xl bg-white border border-slate-300 text-slate-700 font-bold text-xs active:bg-slate-100 disabled:opacity-40 cursor-pointer">
+                        ← Anterior
+                    </button>
+                    <button onclick="stepEvoPhase(1)" id="evo-next-btn" class="flex-1 py-3 rounded-xl bg-navy-900 text-white font-bold text-xs active:bg-navy-800 disabled:opacity-40 cursor-pointer">
+                        Siguiente Fase →
+                    </button>
+                </div>
+            </section>
+
+            <!-- -------------------------------------------------------------
+                 PESTAÑA 3: III. VÍNCULO CONCEPTUAL Y COMPARADOR
+            -------------------------------------------------------------- -->
+            <section id="tab-3" class="tab-panel hidden space-y-4">
+                <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm">
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-gold-600">Sección III • Arquitectura Penal</span>
+                    <h2 class="font-serif text-lg font-bold text-navy-900 mt-0.5 mobile-title">
+                        Delincuencia Organizada, Asociación, Legitimación y Agavillamiento
+                    </h2>
+                    <p class="text-xs text-slate-600 mt-1 leading-relaxed mobile-text">
+                        Estos cuatro conceptos conectan al <strong>sujeto/estructura</strong>, la <strong>forma de actuar</strong> y el <strong>tratamiento del dinero</strong>.
+                    </p>
+                </div>
+
+                <!-- Esquema Vertical Adaptado a Móvil (Nexo Empresarial) -->
+                <div class="bg-navy-900 text-white rounded-2xl p-4 shadow-md space-y-3">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                        <span class="text-xs font-bold text-amber-300 uppercase tracking-wider">Esquema de Conexión</span>
+                        <span class="text-[11px] bg-navy-800 px-2 py-0.5 rounded text-slate-300">Empresa / Estructura</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-2.5">
+                        <div class="bg-navy-800/90 p-3 rounded-xl border border-slate-700">
+                            <div class="text-xs font-extrabold text-amber-300">1. DELINCUENCIA ORGANIZADA</div>
+                            <p class="text-xs text-slate-200 mt-1 leading-relaxed mobile-text">
+                                Estructura criminal (o persona jurídica instrumentalizada) orientada a cometer delitos graves y obtener beneficios.
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="bg-navy-800/90 p-3 rounded-xl border border-slate-700">
+                                <div class="text-[11px] font-extrabold text-amber-300">2. ASOCIACIÓN</div>
+                                <p class="text-[11px] text-slate-300 mt-1 leading-snug">
+                                    Unión permanente (Art. 37 LOCDOFT) dentro de delincuencia organizada.
+                                </p>
+                            </div>
+                            <div class="bg-navy-800/90 p-3 rounded-xl border border-slate-700">
+                                <div class="text-[11px] font-extrabold text-amber-300">3. AGAVILLAMIENTO</div>
+                                <p class="text-[11px] text-slate-300 mt-1 leading-snug">
+                                    Concierto común (Art. 286 CP) de 2 o más personas para delinquir.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="bg-emerald-950/60 p-3 rounded-xl border border-emerald-500/40">
+                            <div class="text-xs font-extrabold text-emerald-300">4. LEGITIMACIÓN DE CAPITALES (EL PUENTE)</div>
+                            <p class="text-xs text-slate-200 mt-1 leading-relaxed mobile-text">
+                                Da salida y apariencia legal a las ganancias ilícitas de la asociación; a su vez, lavar dinero complejo exige coordinación societaria.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Selector Táctil de Comparación Directa -->
+                <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm space-y-3">
+                    <h3 class="font-serif text-base font-bold text-navy-900">Comparador Forense</h3>
+                    <div class="grid grid-cols-2 gap-1.5 bg-slate-100 p-1 rounded-xl">
+                        <button onclick="switchCompareTab('asoc-vs-agav')" id="cmp-tab-1" class="py-2 px-2 rounded-lg text-xs font-bold bg-navy-900 text-white shadow transition cursor-pointer">
+                            Asociación vs. Agavillamiento
+                        </button>
+                        <button onclick="switchCompareTab('puente-lavado')" id="cmp-tab-2" class="py-2 px-2 rounded-lg text-xs font-bold text-slate-700 transition cursor-pointer">
+                            Puente hacia el Lavado
+                        </button>
+                    </div>
+
+                    <div id="cmp-content-1" class="space-y-2.5 pt-1">
+                        <div class="p-3 rounded-xl bg-blue-50/70 border border-blue-200">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-xs font-extrabold text-navy-900">Asociación (Art. 37 LOCDOFT)</span>
+                                <span class="text-[10px] font-bold bg-red-100 text-red-700 px-2 py-0.5 rounded">Mayor gravedad</span>
+                            </div>
+                            <p class="text-xs text-slate-700 leading-relaxed mobile-text">
+                                Ley especial contra Delincuencia Organizada. Aplica a redes estructuradas o personas jurídicas orientadas a delitos graves, con escala penal severa. Basta el solo hecho de asociarse.
+                            </p>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-xs font-extrabold text-slate-800">Agavillamiento (Art. 286 CP)</span>
+                                <span class="text-[10px] font-bold bg-slate-200 text-slate-700 px-2 py-0.5 rounded">Derecho Común</span>
+                            </div>
+                            <p class="text-xs text-slate-700 leading-relaxed mobile-text">
+                                Figura clásica del Código Penal ordinario cuando dos o más personas se asocian para cometer delitos comunes, con menor escala de penas que la LOCDOFT.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="cmp-content-2" class="hidden space-y-2.5 pt-1">
+                        <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-200">
+                            <h4 class="text-xs font-extrabold text-amber-900 uppercase mb-1">Doble Conexión Operativa</h4>
+                            <p class="text-xs text-slate-700 leading-relaxed mobile-text mb-2">
+                                <strong>1. De la estructura al lavado:</strong> Una organización que comete delitos lucrativos (económicos, fiscales o corrupción) necesita dar apariencia legal a esas ganancias mediante legitimación de capitales.
+                            </p>
+                            <p class="text-xs text-slate-700 leading-relaxed mobile-text">
+                                <strong>2. Del lavado a la asociación:</strong> Blanquear capitales a gran escala requiere varias personas, testaferros o sociedades, reconectando con la asociación ilícita.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- -------------------------------------------------------------
+                 PESTAÑA 4: IV. FINANCIAMIENTO AL TERRORISMO
+            -------------------------------------------------------------- -->
+            <section id="tab-4" class="tab-panel hidden space-y-4">
+                <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm">
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-red-600">Sección IV • Seguridad y Riesgo</span>
+                    <h2 class="font-serif text-lg font-bold text-navy-900 mt-0.5 mobile-title">
+                        Financiamiento al Terrorismo
+                    </h2>
+                    <p class="text-xs text-slate-600 mt-1 leading-relaxed mobile-text">
+                        Los crímenes económicos y canales financieros corporativos pueden subvertirse para financiar actividades terroristas.
+                    </p>
+                </div>
+
+                <!-- Contraste: Origen vs. Destino -->
+                <div class="space-y-3">
+                    <div class="bg-white rounded-2xl p-4 border-l-4 border-navy-900 shadow-sm">
+                        <span class="text-[10px] font-extrabold uppercase bg-slate-100 text-navy-900 px-2 py-0.5 rounded">Foco en el Origen</span>
+                        <h3 class="font-serif text-base font-bold text-navy-900 mt-1.5">Legitimación de Capitales</h3>
+                        <p class="text-xs text-slate-700 mt-1 leading-relaxed mobile-text">
+                            El dinero casi siempre proviene de un <strong>delito previo</strong> y el objetivo es <em>"limpiarlo"</em> o darle apariencia legal en la economía formal.
+                        </p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-4 border-l-4 border-red-600 shadow-sm">
+                        <span class="text-[10px] font-extrabold uppercase bg-red-100 text-red-700 px-2 py-0.5 rounded">Foco en el Destino y Uso</span>
+                        <h3 class="font-serif text-base font-bold text-navy-900 mt-1.5">Financiamiento al Terrorismo</h3>
+                        <p class="text-xs text-slate-700 mt-1 leading-relaxed mobile-text">
+                            Importa el <strong>destino terrorista</strong> de los fondos. Pueden provenir de fuentes <strong>ilícitas</strong> (narcotráfico, extorsión, contrabando, fraude) o <strong>aparentemente lícitas</strong> (donaciones, comercios, recursos empresariales desviados).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Acordeones: ¿Quién realiza el Financiamiento al Terrorismo? -->
+                <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm space-y-2.5">
+                    <h3 class="font-serif text-base font-bold text-navy-900">¿Quién puede realizarlo?</h3>
+                    <p class="text-xs text-slate-500">Toca cada categoría de actor para ver su alcance:</p>
+
+                    <!-- Actor 1 -->
+                    <div class="border border-slate-200 rounded-xl overflow-hidden">
+                        <button onclick="toggleMobileActor('m-actor-1')" class="w-full p-3.5 text-left bg-slate-50 flex items-center justify-between font-bold text-xs text-navy-900 cursor-pointer">
+                            <span>👤 Personas Naturales</span>
+                            <span id="m-icon-1" class="text-gold-600 font-black">+</span>
+                        </button>
+                        <div id="m-actor-1" class="hidden p-3.5 text-xs text-slate-700 leading-relaxed bg-white border-t border-slate-100 mobile-text">
+                            Quienes recolectan, transfieren, resguardan o entregan dinero, bienes o apoyo logístico sabiendo que servirán a un terrorista o grupo terrorista.
+                        </div>
+                    </div>
+
+                    <!-- Actor 2 -->
+                    <div class="border border-slate-200 rounded-xl overflow-hidden">
+                        <button onclick="toggleMobileActor('m-actor-2')" class="w-full p-3.5 text-left bg-slate-50 flex items-center justify-between font-bold text-xs text-navy-900 cursor-pointer">
+                            <span>🏢 Personas Jurídicas y Actores Económicos</span>
+                            <span id="m-icon-2" class="text-gold-600 font-black">+</span>
+                        </button>
+                        <div id="m-actor-2" class="hidden p-3.5 text-xs text-slate-700 leading-relaxed bg-white border-t border-slate-100 mobile-text">
+                            Empresas, intermediarios financieros, casas de cambio, importadoras o asociaciones usadas de forma consciente o instrumentalizada para mover fondos y disfrazar envíos bajo operaciones comerciales.
+                        </div>
+                    </div>
+
+                    <!-- Actor 3 -->
+                    <div class="border border-slate-200 rounded-xl overflow-hidden">
+                        <button onclick="toggleMobileActor('m-actor-3')" class="w-full p-3.5 text-left bg-slate-50 flex items-center justify-between font-bold text-xs text-navy-900 cursor-pointer">
+                            <span>🌐 Redes o Grupos Organizados</span>
+                            <span id="m-icon-3" class="text-gold-600 font-black">+</span>
+                        </button>
+                        <div id="m-actor-3" class="hidden p-3.5 text-xs text-slate-700 leading-relaxed bg-white border-t border-slate-100 mobile-text">
+                            Estructuras que operan mediante transferencias fraccionadas, intermediarios, empresas fachada o circuitos informales para evadir controles financieros y recomendaciones del GAFI.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- -------------------------------------------------------------
+                 PESTAÑA 5: V. SENTENCIA TSJ & QUIZ RÁPIDO MÓVIL
+            -------------------------------------------------------------- -->
+            <section id="tab-5" class="tab-panel hidden space-y-4">
+                <!-- Ficha Jurisprudencia TSJ -->
+                <div class="bg-navy-900 text-white rounded-2xl p-4 shadow-md border-l-4 border-gold-500 space-y-2.5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-300">Jurisprudencia TSJ</span>
+                        <span class="text-[10px] bg-navy-800 px-2 py-0.5 rounded text-slate-300">17 marzo 2021</span>
+                    </div>
+                    <h2 class="font-serif text-base font-bold leading-snug mobile-title">
+                        Sentencia N° 6 — Sala de Casación Penal del TSJ
+                    </h2>
+                    <p class="text-xs text-slate-200 leading-relaxed mobile-text">
+                        La Sala <strong>se avoca de oficio</strong> e interpreta los elementos constitutivos y el alcance del delito de <strong>legitimación de capitales</strong> bajo la Ley Orgánica contra la Delincuencia Organizada y Financiamiento al Terrorismo (LOCDOFT).
+                    </p>
+                    <div class="pt-1">
+                        <a href="https://derechovenezolano.wordpress.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-1.5 text-xs font-bold text-amber-300 underline hover:text-amber-200">
+                            <span>Referencia: Análisis Sentencia N° 6 (Derecho Venezolano)</span>
+                            <span>↗</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mini-Quiz Táctil para la Clase -->
+                <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                        <div>
+                            <span class="text-[10px] font-extrabold uppercase tracking-wider text-gold-600">Repaso en Teléfono</span>
+                            <h3 class="font-serif text-base font-bold text-navy-900">Quiz Rápido (4 Preguntas)</h3>
+                        </div>
+                        <button onclick="resetMobileQuiz()" class="px-2.5 py-1.5 rounded-lg bg-slate-100 text-slate-700 text-xs font-bold active:bg-slate-200 cursor-pointer">
+                            Reiniciar
+                        </button>
+                    </div>
+
+                    <div id="mobile-quiz-list" class="space-y-4">
+                        <!-- Renderizado dinámicamente -->
+                    </div>
+
+                    <div id="mobile-quiz-score" class="hidden p-4 rounded-xl bg-navy-900 text-white text-center space-y-2">
+                        <div class="text-xs uppercase font-bold text-amber-300">Puntuación Final</div>
+                        <div id="mobile-score-val" class="text-lg font-extrabold"></div>
+                        <button onclick="resetMobileQuiz()" class="px-4 py-2 rounded-lg bg-gold-500 text-navy-950 text-xs font-extrabold cursor-pointer">
+                            Volver a intentar
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- =================================================================
+             BOTTOM NAVIGATION BAR FIJA (OPTIMIZADA PARA PULGAR)
+        ================================================================== -->
+        <nav aria-label="Navegación principal móvil" class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] z-30 bg-white/95 backdrop-blur-md border-t border-slate-200 shadow-[0_-4px_16px_rgba(15,23,42,0.08)] px-1 py-1.5">
+            <div class="grid grid-cols-5 gap-0.5">
+                <button onclick="switchMobileTab(1)" id="nav-btn-1" class="nav-tab-btn flex flex-col items-center justify-center py-1.5 rounded-xl text-navy-900 bg-amber-50 font-extrabold transition cursor-pointer">
+                    <svg class="w-5 h-5 mb-0.5 text-gold-600" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
+                    </svg>
+                    <span class="text-[10px] leading-none">I. Normas</span>
+                </button>
+
+                <button onclick="switchMobileTab(2)" id="nav-btn-2" class="nav-tab-btn flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 font-semibold transition cursor-pointer">
+                    <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                    </svg>
+                    <span class="text-[10px] leading-none">II. Evolución</span>
+                </button>
+
+                <button onclick="switchMobileTab(3)" id="nav-btn-3" class="nav-tab-btn flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 font-semibold transition cursor-pointer">
+                    <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+                    </svg>
+                    <span class="text-[10px] leading-none">III. Vínculo</span>
+                </button>
+
+                <button onclick="switchMobileTab(4)" id="nav-btn-4" class="nav-tab-btn flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 font-semibold transition cursor-pointer">
+                    <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                    </svg>
+                    <span class="text-[10px] leading-none">IV. Terrorismo</span>
+                </button>
+
+                <button onclick="switchMobileTab(5)" id="nav-btn-5" class="nav-tab-btn flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 font-semibold transition cursor-pointer">
+                    <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span class="text-[10px] leading-none">TSJ & Quiz</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- =================================================================
+             MODAL FULLSCREEN DE INFOGRAFÍA VERTICAL MÓVIL
+        ================================================================== -->
+        <div id="infographic-modal" class="fixed inset-0 z-50 hidden bg-navy-950/90 backdrop-blur-sm flex justify-center">
+            <div class="w-full max-w-[430px] bg-[#f6f3eb] h-full overflow-y-auto flex flex-col shadow-2xl">
+                <!-- Barra superior del modal -->
+                <div class="sticky top-0 z-10 bg-navy-900 text-white px-4 py-3 flex items-center justify-between border-b-2 border-gold-500">
+                    <div>
+                        <span class="text-[10px] uppercase font-bold text-amber-300 block">Esquema Visual Completo</span>
+                        <h3 class="font-serif text-sm font-bold">Infografía de la Exposición</h3>
+                    </div>
+                    <button onclick="closeInfographicModal()" class="h-9 px-3 rounded-xl bg-red-600 text-white text-xs font-extrabold flex items-center space-x-1 cursor-pointer">
+                        <span>Cerrar ✕</span>
+                    </button>
+                </div>
+
+                <!-- Contenido vertical replicando fielmente la infografía adjunta -->
+                <div class="p-4 space-y-4 text-slate-800">
+                    <div class="text-center bg-white rounded-2xl p-4 border border-slate-300 shadow-sm">
+                        <div class="flex justify-center space-x-3 text-navy-900 mb-1">
+                            <span>⚖️</span>
+                            <span>🏢</span>
+                        </div>
+                        <h4 class="font-serif text-base font-black text-navy-900 leading-tight">
+                            DELITOS ECONÓMICOS EN EL ÁMBITO DE LA EMPRESA
+                        </h4>
+                        <p class="text-[11px] text-slate-500 mt-1 font-semibold">Ismael Zambrano • C.I. 13.528.514</p>
+                    </div>
+
+                    <!-- Bloque I Infografía -->
+                    <div class="bg-white rounded-2xl p-4 border border-slate-300 space-y-2">
+                        <h5 class="font-serif text-xs font-black text-navy-900 uppercase border-b border-slate-200 pb-1.5">
+                            I. MARCO NORMATIVO (LOCDOFT, CP, GAFI)
+                        </h5>
+                        <div class="space-y-2 text-xs">
+                            <div class="flex items-start space-x-2">
+                                <span class="text-navy-900 font-bold">📄</span>
+                                <span><strong>Ley Orgánica Contra la Delincuencia Organizada y Financiamiento al Terrorismo (LOCDOFT)</strong></span>
+                            </div>
+                            <div class="flex items-start space-x-2">
+                                <span class="text-navy-900 font-bold">⚖️</span>
+                                <span><strong>Código Penal (CP)</strong></span>
+                            </div>
+                            <div class="flex items-start space-x-2">
+                                <span class="text-navy-900 font-bold">🛡️</span>
+                                <span><strong>Recomendaciones del Grupo de Acción Financiera Internacional (GAFI)</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bloque II Infografía -->
+                    <div class="bg-white rounded-2xl p-4 border border-slate-300 space-y-2.5">
+                        <h5 class="font-serif text-xs font-black text-navy-900 uppercase border-b border-slate-200 pb-1.5">
+                            II. EVOLUCIÓN DEL DELITO EN LA EMPRESA
+                        </h5>
+                        <div class="flex flex-col items-center space-y-1.5 text-center text-xs font-bold">
+                            <div class="w-full bg-slate-100 p-2.5 rounded-xl border border-slate-300">
+                                💼 Fraude inicial básico
+                            </div>
+                            <div class="text-navy-900 font-black">⬇</div>
+                            <div class="w-full bg-slate-100 p-2.5 rounded-xl border border-slate-300">
+                                🏢 Proceso complejo estructurado
+                            </div>
+                            <div class="text-navy-900 font-black">⬇</div>
+                            <div class="w-full bg-navy-900 text-amber-300 p-2.5 rounded-xl">
+                                🌐 Impacto financiero global
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bloque III Infografía -->
+                    <div class="bg-white rounded-2xl p-4 border border-slate-300 space-y-2.5">
+                        <h5 class="font-serif text-xs font-black text-navy-900 uppercase border-b border-slate-200 pb-1.5">
+                            III. DELINCUENCIA ORGANIZADA, ASOCIACIÓN, LEGITIMACIÓN Y AGAVILLAMIENTO
+                        </h5>
+                        <div class="grid grid-cols-1 gap-2 text-xs">
+                            <div class="bg-slate-100 p-2.5 rounded-xl border border-slate-200">
+                                <strong class="text-navy-900 block">DELINCUENCIA ORGANIZADA:</strong>
+                                Estructura criminal para cometer delitos graves y obtener beneficios.
+                            </div>
+                            <div class="bg-slate-100 p-2.5 rounded-xl border border-slate-200">
+                                <strong class="text-navy-900 block">ASOCIACIÓN:</strong>
+                                Unión de dos o más personas para delinquir de forma permanente.
+                            </div>
+                            <div class="bg-slate-100 p-2.5 rounded-xl border border-slate-200">
+                                <strong class="text-navy-900 block">LEGITIMACIÓN (de Capitales):</strong>
+                                Proceso de dar apariencia legal a fondos de origen ilícito.
+                            </div>
+                            <div class="bg-slate-100 p-2.5 rounded-xl border border-slate-200">
+                                <strong class="text-navy-900 block">AGAVILLAMIENTO:</strong>
+                                Concierto de personas para cometer delitos de forma planificada.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bloque IV Infografía -->
+                    <div class="bg-white rounded-2xl p-4 border border-slate-300 space-y-2">
+                        <h5 class="font-serif text-xs font-black text-navy-900 uppercase border-b border-slate-200 pb-1.5">
+                            IV. FINANCIAMIENTO AL TERRORISMO
+                        </h5>
+                        <p class="text-xs text-slate-700 leading-relaxed">
+                            Los crímenes económicos y canales financieros corporativos pueden subvertirse para financiar actividades terroristas.
+                        </p>
+                        <div class="flex flex-col space-y-1.5 pt-1 text-xs font-bold">
+                            <span class="bg-red-50 text-red-800 border border-red-200 px-3 py-1.5 rounded-lg">• Nexos con el Crimen Organizado</span>
+                            <span class="bg-amber-50 text-amber-900 border border-amber-200 px-3 py-1.5 rounded-lg">• Canales Financieros Ilícitos</span>
+                            <span class="bg-slate-100 text-navy-900 border border-slate-300 px-3 py-1.5 rounded-lg">• Responsabilidad de la Empresa</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- =====================================================================
+         JAVASCRIPT DE INTERACTIVIDAD MOBILE-FIRST
+    ====================================================================== -->
+    <script>
+        // 1. DATOS EXACTOS DE LA SECCIÓN I (MARCO NORMATIVO Y CONCEPTOS)
+        const normsData = [
+            {
+                id: 'n1',
+                group: 'locdoft',
+                tag: 'Art. 4, num. 9 LOCDOFT',
+                title: 'Delincuencia Organizada',
+                text: 'Se refiere a la actuación estructurada de un grupo (o incluso de una sola persona actuando como órgano de una persona jurídica o asociativa) orientada a cometer delitos graves previstos en la ley, buscando obtener beneficios (económicos, de poder o materiales).'
+            },
+            {
+                id: 'n2',
+                group: 'locdoft',
+                tag: 'Art. 37 LOCDOFT',
+                title: 'Asociación',
+                text: 'Sanciona a quien forme parte de un grupo de delincuencia organizada con el fin de cometer uno o más delitos graves, bastando el solo hecho de la asociación para configurar el tipo penal.'
+            },
+            {
+                id: 'n3',
+                group: 'cp',
+                tag: 'Código Penal, Art. 286',
+                title: 'Agavillamiento',
+                text: 'Figura clásica del derecho penal común cuando dos o más personas se asocian para cometer delitos. En la práctica doctrinal y forense, se analiza frente a la asociación del Art. 37 de la LOCDOFT por su ámbito de aplicación, la gravedad de los delitos perseguidos y la escala de las penas.'
+            },
+            {
+                id: 'n4',
+                group: 'locdoft',
+                tag: 'LOCDOFT / TSJ Sent. N° 6',
+                title: 'Legitimación de Capitales',
+                text: 'Es el proceso de ocultar, disfrazar o dar apariencia de legalidad a bienes, fondos o haberes provenientes de actividades ilícitas, permitiendo que entren al circuito económico o financiero formal.'
+            },
+            {
+                id: 'n5',
+                group: 'locdoft',
+                tag: 'Art. 52 LOCDOFT',
+                title: 'Terrorismo y Acto Terrorista',
+                text: 'El Art. 52 tipifica el delito de terrorismo cometido por un terrorista individual o mediante una organización terrorista al realizar o intentar realizar actos terroristas. Son conductas ejecutadas por medios graves (atentados contra la vida o integridad, secuestros, explosiones, liberación de sustancias peligrosas o interrupción de servicios o recursos vitales) con fines como intimidar a la población o alterar/desestabilizar el orden institucional, económico o social.'
+            },
+            {
+                id: 'n6',
+                group: 'locdoft',
+                tag: 'LOCDOFT',
+                title: 'Financiamiento al Terrorismo',
+                text: 'Consiste en proporcionar, facilitar, resguardar, administrar, recolectar o aportar fondos o recursos (lícitos o ilícitos) por cualquier medio, directa o indirectamente, sabiendo o con el propósito de que sean usados por un terrorista o grupo terrorista, o para cometer actos terroristas.'
+            },
+            {
+                id: 'n7',
+                group: 'gafi',
+                tag: 'Estándares Internacionales',
+                title: 'Recomendaciones del GAFI',
+                text: 'Reglas del Grupo de Acción Financiera Internacional contra el lavado de activos, el financiamiento al terrorismo y el financiamiento de la proliferación de armas de destrucción masiva. Exigen a los Estados tipificar estos delitos, aplicar medidas de debida diligencia a los sujetos obligados, identificar beneficiarios finales y mantener cooperación internacional.'
+            }
+        ];
+
+        function renderNormsAccordion(filter = 'all') {
+            const container = document.getElementById('norms-accordion-list');
+            const items = filter === 'all' ? normsData : normsData.filter(i => i.group === filter);
+
+            container.innerHTML = items.map((item, idx) => {
+                const isOpen = idx === 0; // El primero abierto por defecto para lectura inmediata
+                return `
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <button onclick="toggleNormAccordion('${item.id}')" class="w-full p-4 text-left flex items-center justify-between gap-2 active:bg-slate-50 transition cursor-pointer">
+                            <div class="min-w-0">
+                                <span class="inline-block text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded bg-navy-900 text-amber-300 mb-1">
+                                    ${item.tag}
+                                </span>
+                                <h3 class="font-serif text-sm font-bold text-navy-900 leading-snug">
+                                    ${item.title}
+                                </h3>
+                            </div>
+                            <span id="acc-icon-${item.id}" class="w-7 h-7 rounded-full bg-slate-100 text-navy-900 flex items-center justify-center font-extrabold text-sm shrink-0">
+                                ${isOpen ? '−' : '+'}
+                            </span>
+                        </button>
+                        <div id="acc-body-${item.id}" class="${isOpen ? '' : 'hidden'} px-4 pb-4 pt-2 border-t border-slate-100 text-xs text-slate-700 leading-relaxed mobile-text">
+                            ${item.text}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function toggleNormAccordion(id) {
+            const body = document.getElementById(`acc-body-${id}`);
+            const icon = document.getElementById(`acc-icon-${id}`);
+            const isHidden = body.classList.contains('hidden');
+            body.classList.toggle('hidden');
+            icon.textContent = isHidden ? '−' : '+';
+        }
+
+        function filterNorms(group) {
+            document.querySelectorAll('.norm-filter').forEach(btn => {
+                btn.className = 'norm-filter px-3 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 shrink-0 cursor-pointer';
+            });
+            document.getElementById(`nf-${group}`).className = 'norm-filter px-3 py-1.5 rounded-full text-xs font-bold bg-navy-900 text-white shrink-0 cursor-pointer';
+            renderNormsAccordion(group);
+        }
+
+        // 2. DATOS DE LA SECCIÓN II (4 FASES DE EVOLUCIÓN EN LA EMPRESA)
+        const evoPhases = [
+            {
+                badge: 'Fase 1 de 4 • El Inicio',
+                title: '1. La grieta o el origen ilícito',
+                desc: 'Todo arranca con una conducta irregular o ilícita inicial dentro o a través de una empresa que vulnera las normas contables, fiscales o cambiarias:',
+                bullets: [
+                    'Facturación falsa o simulada',
+                    'Contrabando y evasión fiscal',
+                    'Desvío de fondos públicos o estafa corporativa',
+                    'Uso indebido de divisas o recursos de origen criminal'
+                ]
+            },
+            {
+                badge: 'Fase 2 de 4 • Organización',
+                title: '2. La estructuración y reparto de roles',
+                desc: 'Para que la maniobra no sea un simple hecho aislado y pase desapercibida ante controles internos, auditorías o entes reguladores, se organiza una red con funciones definidas:',
+                bullets: [
+                    'Quién firma y autoriza operaciones',
+                    'Quién mueve el dinero en cuentas',
+                    'Quién crea empresas de fachada',
+                    'Quién presta su nombre como testaferro'
+                ]
+            },
+            {
+                badge: 'Fase 3 de 4 • Blanqueo',
+                title: '3. La legitimación de los capitales obtenidos',
+                desc: 'Las ganancias ilícitas generadas se mezclan con la operativa mercantil ordinaria para darles apariencia legítima y poder usarlas o invertirlas sin levantar sospechas inmediatas:',
+                bullets: [
+                    'Uso de comercios e importadoras',
+                    'Inversión en constructoras y bienes',
+                    'Movimientos financieros aparentemente ordinarios',
+                    'Integración al circuito económico formal'
+                ]
+            },
+            {
+                badge: 'Fase 4 de 4 • Escalamiento',
+                title: '4. El escalamiento a delitos de alto nivel',
+                desc: 'Cuando la estructura ya tiene control operativo, capacidad financiera y cobertura corporativa, puede derivar en delitos de mayor gravedad o impacto sistémico:',
+                bullets: [
+                    'Corrupción a gran escala',
+                    'Redes transnacionales de lavado',
+                    'Afectación severa al orden económico',
+                    'Canalización de recursos hacia estructuras violentas o terroristas'
+                ]
+            }
+        ];
+
+        let activeEvoIndex = 0;
+
+        function selectEvoPhase(idx) {
+            activeEvoIndex = idx;
+            const item = evoPhases[idx];
+
+            document.querySelectorAll('.evo-pill').forEach((pill, i) => {
+                if (i === idx) {
+                    pill.className = 'evo-pill py-2.5 px-1 rounded-xl text-center font-bold text-xs bg-navy-900 text-amber-300 shadow cursor-pointer';
+                } else {
+                    pill.className = 'evo-pill py-2.5 px-1 rounded-xl text-center font-bold text-xs bg-white text-slate-700 border border-slate-200 cursor-pointer';
+                }
+            });
+
+            document.getElementById('evo-mobile-card').innerHTML = `
+                <span class="inline-block text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-100 text-amber-900">
+                    ${item.badge}
+                </span>
+                <h3 class="font-serif text-base font-bold text-navy-900 leading-snug mobile-title">
+                    ${item.title}
+                </h3>
+                <p class="text-xs text-slate-700 leading-relaxed mobile-text">
+                    ${item.desc}
+                </p>
+                <div class="bg-slate-50 rounded-xl p-3 border border-slate-200/80 space-y-1.5">
+                    <span class="text-[10px] font-extrabold uppercase text-gold-600 block">Elementos clave:</span>
+                    ${item.bullets.map(b => `
+                        <div class="flex items-start space-x-2 text-xs text-slate-700 mobile-text">
+                            <span class="text-gold-600 font-bold">▸</span>
+                            <span>${b}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            document.getElementById('evo-prev-btn').disabled = idx === 0;
+            document.getElementById('evo-next-btn').disabled = idx === evoPhases.length - 1;
+        }
+
+        function stepEvoPhase(delta) {
+            const next = activeEvoIndex + delta;
+            if (next >= 0 && next < evoPhases.length) {
+                selectEvoPhase(next);
+            }
+        }
+
+        // 3. COMPARADOR SECCIÓN III
+        function switchCompareTab(mode) {
+            const c1 = document.getElementById('cmp-content-1');
+            const c2 = document.getElementById('cmp-content-2');
+            const t1 = document.getElementById('cmp-tab-1');
+            const t2 = document.getElementById('cmp-tab-2');
+
+            if (mode === 'asoc-vs-agav') {
+                c1.classList.remove('hidden');
+                c2.classList.add('hidden');
+                t1.className = 'py-2 px-2 rounded-lg text-xs font-bold bg-navy-900 text-white shadow transition cursor-pointer';
+                t2.className = 'py-2 px-2 rounded-lg text-xs font-bold text-slate-700 transition cursor-pointer';
+            } else {
+                c2.classList.remove('hidden');
+                c1.classList.add('hidden');
+                t2.className = 'py-2 px-2 rounded-lg text-xs font-bold bg-navy-900 text-white shadow transition cursor-pointer';
+                t1.className = 'py-2 px-2 rounded-lg text-xs font-bold text-slate-700 transition cursor-pointer';
+            }
+        }
+
+        // 4. ACORDEONES DE ACTORES EN FINANCIAMIENTO AL TERRORISMO
+        function toggleMobileActor(id) {
+            const el = document.getElementById(id);
+            const num = id.split('-')[2];
+            const icon = document.getElementById(`m-icon-${num}`);
+            const hidden = el.classList.contains('hidden');
+            el.classList.toggle('hidden');
+            icon.textContent = hidden ? '−' : '+';
+        }
+
+        // 5. QUIZ INTERACTIVO MÓVIL
+        const mobileQuizData = [
+            {
+                q: '1. ¿Cuál es la diferencia clave en el origen de los fondos entre Legitimación de Capitales y Financiamiento al Terrorismo?',
+                opts: [
+                    'En el financiamiento al terrorismo los fondos pueden ser ilícitos o lícitos (donaciones, comercios), importando su destino terrorista.',
+                    'Ambos delitos exigen exclusivamente fondos provenientes del narcotráfico.',
+                    'La legitimación de capitales solo usa dinero lícito.'
+                ],
+                ans: 0,
+                exp: '¡Correcto! En el financiamiento al terrorismo el foco está en el destino o uso terrorista, sin importar si el dinero nació lícito o ilícito.'
+            },
+            {
+                q: '2. ¿Qué artículo de la LOCDOFT sanciona el solo hecho de formar parte de un grupo de delincuencia organizada?',
+                opts: [
+                    'Artículo 286 (Agavillamiento)',
+                    'Artículo 37 (Asociación)',
+                    'Artículo 52 (Terrorismo)'
+                ],
+                ans: 1,
+                exp: '¡Exacto! El Art. 37 de la LOCDOFT tipifica la Asociación dentro de la delincuencia organizada.'
+            },
+            {
+                q: '3. Según el Art. 4, numeral 9 LOCDOFT, ¿puede configurarse delincuencia organizada con una sola persona?',
+                opts: [
+                    'No, exige al menos cinco personas físicas.',
+                    'Sí, cuando actúa como órgano de una persona jurídica o asociativa para cometer delitos graves.',
+                    'Solo en delitos culposos.'
+                ],
+                ans: 1,
+                exp: '¡Muy bien! La ley prevé expresamente la actuación de una sola persona como órgano de una persona jurídica o asociativa.'
+            },
+            {
+                q: '4. ¿Qué establece la Sentencia N° 6 de la Sala de Casación Penal del TSJ (17/03/2021)?',
+                opts: [
+                    'Se avoca de oficio e interpreta los elementos y el alcance del delito de legitimación de capitales bajo la LOCDOFT.',
+                    'Elimina las recomendaciones del GAFI en Venezuela.',
+                    'Deroga el Art. 286 del Código Penal.'
+                ],
+                ans: 0,
+                exp: '¡Correcto! Interpreta los elementos constitutivos y alcance de la legitimación de capitales en la LOCDOFT.'
+            }
+        ];
+
+        let mobileAnswers = {};
+
+        function renderMobileQuiz() {
+            const list = document.getElementById('mobile-quiz-list');
+            list.innerHTML = mobileQuizData.map((item, qIdx) => {
+                const answered = mobileAnswers[qIdx] !== undefined;
+                return `
+                    <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                        <p class="text-xs font-bold text-navy-900 leading-snug mobile-text">${item.q}</p>
+                        <div class="space-y-1.5">
+                            ${item.opts.map((opt, oIdx) => {
+                                let cls = 'bg-white border-slate-200 text-slate-700';
+                                if (answered) {
+                                    if (oIdx === item.ans) cls = 'bg-emerald-50 border-emerald-500 text-emerald-900 font-bold';
+                                    else if (oIdx === mobileAnswers[qIdx]) cls = 'bg-red-50 border-red-400 text-red-800';
+                                    else cls = 'bg-white border-slate-200 text-slate-400 opacity-60';
+                                }
+                                return `
+                                    <button onclick="answerMobileQuiz(${qIdx}, ${oIdx})" ${answered ? 'disabled' : ''} class="w-full text-left p-2.5 rounded-xl border text-xs leading-snug transition cursor-pointer ${cls}">
+                                        ${opt}
+                                    </button>
+                                `;
+                            }).join('')}
+                        </div>
+                        ${answered ? `
+                            <div class="p-2.5 rounded-lg text-[11px] leading-snug ${mobileAnswers[qIdx] === item.ans ? 'bg-emerald-100 text-emerald-950' : 'bg-amber-100 text-amber-950'}">
+                                ${item.exp}
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function answerMobileQuiz(qIdx, oIdx) {
+            if (mobileAnswers[qIdx] !== undefined) return;
+            mobileAnswers[qIdx] = oIdx;
+            renderMobileQuiz();
+
+            if (Object.keys(mobileAnswers).length === mobileQuizData.length) {
+                const score = mobileQuizData.reduce((acc, q, idx) => acc + (mobileAnswers[idx] === q.ans ? 1 : 0), 0);
+                document.getElementById('mobile-score-val').textContent = `${score} de ${mobileQuizData.length} correctas`;
+                document.getElementById('mobile-quiz-score').classList.remove('hidden');
+            }
+        }
+
+        function resetMobileQuiz() {
+            mobileAnswers = {};
+            document.getElementById('mobile-quiz-score').classList.add('hidden');
+            renderMobileQuiz();
+        }
+
+        // 6. NAVEGACIÓN INFERIOR MÓVIL, TAMAÑO DE FUENTE Y MODAL
+        function switchMobileTab(tabNumber) {
+            for (let i = 1; i <= 5; i++) {
+                const panel = document.getElementById(`tab-${i}`);
+                const btn = document.getElementById(`nav-btn-${i}`);
+                const icon = btn.querySelector('svg');
+
+                if (i === tabNumber) {
+                    panel.classList.remove('hidden');
+                    btn.className = 'nav-tab-btn flex flex-col items-center justify-center py-1.5 rounded-xl text-navy-900 bg-amber-50 font-extrabold transition cursor-pointer';
+                    icon.classList.add('text-gold-600');
+                } else {
+                    panel.classList.add('hidden');
+                    btn.className = 'nav-tab-btn flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 font-semibold transition cursor-pointer';
+                    icon.classList.remove('text-gold-600');
+                }
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleFontSize() {
+            document.body.classList.toggle('large-font');
+            const isLarge = document.body.classList.contains('large-font');
+            document.getElementById('btn-font').textContent = isLarge ? 'A−' : 'A+';
+        }
+
+        function openInfographicModal() {
+            document.getElementById('infographic-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeInfographicModal() {
+            document.getElementById('infographic-modal').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // Inicialización
+        window.addEventListener('DOMContentLoaded', () => {
+            renderNormsAccordion('all');
+            selectEvoPhase(0);
+            renderMobileQuiz();
+        });
+    </script>
+</body>
+</html>
