@@ -124,7 +124,7 @@
                     <span class="truncate">ISMAEL ZAMBRANO</span>
                 </div>
                 <span class="font-mono text-amber-300 bg-navy-950/80 px-2 py-0.5 rounded border border-slate-800 shrink-0">
-                    C.I. 13.528.514
+                    C.I. 1x.xxx.xx4
                 </span>
             </div>
         </header>
@@ -413,14 +413,21 @@
             -------------------------------------------------------------- -->
             <section id="tab-5" class="tab-panel hidden space-y-4">
                 <!-- Ficha Jurisprudencia TSJ -->
-                <div class="bg-navy-900 text-white rounded-2xl p-4 shadow-md border-l-4 border-gold-500 space-y-2.5">
-                    <div class="flex items-center justify-between">
-                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-300">Jurisprudencia TSJ</span>
-                        <span class="text-[10px] bg-navy-800 px-2 py-0.5 rounded text-slate-300">17 marzo 2021</span>
-                    </div>
-                    <h2 class="font-serif text-base font-bold leading-snug mobile-title">
-                        Sentencia N° 006 — Sala de Casación Penal del TSJ
-                    </h2>
+                <div class="bg-navy-900 text-white rounded-2xl shadow-md border-l-4 border-gold-500 overflow-hidden">
+                    <button type="button" onclick="toggleSentenciaCard('sentencia-2021-body', 'sentencia-2021-icon', this)" class="w-full p-4 text-left flex items-center justify-between gap-3 cursor-pointer" aria-expanded="false" aria-controls="sentencia-2021-body">
+                        <div>
+                            <div class="flex items-center gap-2 mb-1.5">
+                                <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-300">Jurisprudencia TSJ</span>
+                                <span class="text-[10px] bg-navy-800 px-2 py-0.5 rounded text-slate-300">17 marzo 2021</span>
+                            </div>
+                            <h2 class="font-serif text-base font-bold leading-snug mobile-title">
+                                Sentencia N° 006 — Sala de Casación Penal del TSJ
+                            </h2>
+                            <p class="mt-1 text-[11px] text-slate-300">Expediente AA30-P-2020-000116 · Ver resumen</p>
+                        </div>
+                        <span id="sentencia-2021-icon" class="w-7 h-7 rounded-full bg-navy-800 text-amber-300 flex items-center justify-center font-extrabold text-sm shrink-0">+</span>
+                    </button>
+                    <div id="sentencia-2021-body" class="hidden border-t border-slate-700 p-4 space-y-3">
                     <div class="text-xs text-slate-200 leading-relaxed mobile-text space-y-1">
                         <p><strong>Fecha:</strong> 17-03-2021</p>
                         <p><strong>Expediente:</strong> N° AA30-P-2020-000116</p>
@@ -453,11 +460,12 @@
                             <span class="ml-2 text-lg shrink-0" aria-hidden="true">↗</span>
                         </a>
                     </div>
+                    </div>
                 </div>
 
                 <!-- Segunda tarjeta desplegable: expediente AA30-P-2020-000066 -->
                 <div class="bg-navy-900 text-white rounded-2xl shadow-md border-l-4 border-gold-500 overflow-hidden">
-                    <button type="button" onclick="toggleSentencia2020()" class="w-full p-4 text-left flex items-center justify-between gap-3 cursor-pointer" aria-expanded="false" aria-controls="sentencia-2020-body">
+                    <button type="button" onclick="toggleSentenciaCard('sentencia-2020-body', 'sentencia-2020-icon', this)" class="w-full p-4 text-left flex items-center justify-between gap-3 cursor-pointer" aria-expanded="false" aria-controls="sentencia-2020-body">
                         <div>
                             <div class="flex items-center gap-2 mb-1.5">
                                 <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-300">Jurisprudencia TSJ</span>
@@ -498,7 +506,7 @@
 
                         <div class="pt-1">
                             <a id="sentencia-aa30-p-2020-000066-link"
-                               href="#"
+                               href="./historico.TSJ.GOB.VE/DECISIONES/SCP/JULIO/309892-19-3720-2020-R20-66.HTML.PDF"
                                target="_blank"
                                rel="noopener noreferrer"
                                class="flex items-center justify-between w-full px-3 py-3 rounded-xl bg-blue-600 active:bg-blue-700 text-white border border-blue-500 shadow-sm transition">
@@ -812,11 +820,6 @@
          JAVASCRIPT DE INTERACTIVIDAD MOBILE-FIRST
     ====================================================================== -->
     <script>
-        // URL del PDF alojado en GitHub:
-        // Reemplaza únicamente la ruta final por el nombre real del archivo en el repositorio.
-        const SENTENCIA_AA30_P_2020_000066_URL =
-            'https://raw.githubusercontent.com/ismaelzambrano/delitos-economicos-empresa/main/REEMPLAZAR-POR-NOMBRE-DEL-PDF.pdf';
-
         // 1. DATOS EXACTOS DE LA SECCIÓN I (MARCO NORMATIVO Y CONCEPTOS)
         const normsData = [
             {
@@ -1071,17 +1074,15 @@
             }
         }
 
-        function toggleSentencia2020() {
-            const body = document.getElementById('sentencia-2020-body');
-            const icon = document.getElementById('sentencia-2020-icon');
-            const button = body?.previousElementSibling;
-
+        function toggleSentenciaCard(bodyId, iconId, button) {
+            const body = document.getElementById(bodyId);
+            const icon = document.getElementById(iconId);
             if (!body || !icon) return;
 
             const isHidden = body.classList.contains('hidden');
             body.classList.toggle('hidden');
             icon.textContent = isHidden ? '−' : '+';
-            if (button) button.setAttribute('aria-expanded', String(isHidden));
+            button.setAttribute('aria-expanded', String(isHidden));
         }
 
         function renderNormsAccordion(filter = 'all') {
@@ -1377,9 +1378,6 @@
 
         // Inicialización
         window.addEventListener('DOMContentLoaded', () => {
-            const sentenciaLink = document.getElementById('sentencia-aa30-p-2020-000066-link');
-            if (sentenciaLink) sentenciaLink.href = SENTENCIA_AA30_P_2020_000066_URL;
-
             renderNormsAccordion('all');
             selectEvoPhase(0);
         });
