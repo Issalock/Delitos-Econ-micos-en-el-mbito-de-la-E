@@ -345,7 +345,17 @@
             gap: 8px;
         }
         .header-inner > div:first-child { flex: 1 1 auto; min-width: 0; }
-        .header-inner > div:first-child > :not(.menu-toggle) { display: none; }
+        .header-inner > div:first-child > :not(.menu-toggle):not(#active-course-short) { display: none; }
+        #active-course-short {
+            display: block;
+            max-width: 132px;
+            overflow: hidden;
+            color: var(--navy);
+            font-size: 12px;
+            font-weight: 800;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
         .header-inner > div:last-child { flex: 0 0 auto; gap: 8px; }
         .header-inner > div:last-child > div { max-width: 190px; }
         .header-inner .clock-label { display: none; }
@@ -579,6 +589,7 @@
                         <p class="text-[10px] uppercase tracking-[.16em] font-extrabold text-[#8B1E3F]">Aula Virtual • UBV</p>
                         <h1 class="font-bold text-sm sm:text-base truncate">Sistema Educativo Web</h1>
                     </div>
+                    <span id="active-course-short">Delitos Económicos</span>
                 </div>
                 <div class="flex items-center gap-2 sm:gap-3">
                     <div class="text-right">
@@ -597,8 +608,11 @@
         <aside class="sidebar" id="sidebar" aria-label="Navegación de unidades curriculares">
             <div class="flex items-center justify-between mb-5">
                 <div>
-                    <p class="text-[10px] uppercase tracking-widest font-extrabold text-slate-500">Espacio académico</p>
-                    <h2 class="font-bold text-sm mt-1">Unidades curriculares</h2>
+                    <p class="text-[10px] uppercase tracking-widest font-extrabold text-slate-500">Universidad Bolivariana de Venezuela</p>
+                    <h2 class="font-bold text-sm mt-1">PFG Estudios Jurídicos</h2>
+                    <p class="mt-1 text-[11px] leading-snug text-slate-300">Trayecto 4 · Tramo 2 · Sección 4-2-1 · Turno Nocturno</p>
+                    <p class="mt-1 text-[11px] leading-snug text-slate-300">Sede Chaguaramos · Piso 7 · Aula CH7-D</p>
+                    <p class="mt-4 text-[10px] uppercase tracking-widest font-extrabold text-slate-400">Materia activa</p>
                     <p id="drawer-active-course" class="mt-2 text-xs font-semibold leading-snug"></p>
                 </div>
                 <button class="menu-toggle" type="button" aria-label="Cerrar navegación" onclick="toggleSidebar(false)">✕</button>
@@ -1394,8 +1408,11 @@
             {
                 id: 'delitos-economicos',
                 nombre: 'Delitos Económicos en el Ámbito de la Empresa',
-                profesor: 'Por asignar',
-                horario: 'Por definir',
+                nombreCorto: 'Delitos Económicos',
+                diasClase: 'Lunes',
+                profesor: 'Prof. Carlos Romero / Nueva Profesora',
+                horario: 'Lunes | 6:00 PM - 7:30 PM (2 Horas)',
+                aula: 'CH7-D (Piso 7)',
                 recursos: [
                     { id: 'marco-normativo', tipo: 'escrito', titulo: 'Marco normativo y conceptos', descripcion: 'LOCDOFT, Código Penal y recomendaciones GAFI.', fechaSubida: '2026-11-21', urlOContenido: 'tab-1', modulo: 1 },
                     { id: 'evolucion-delito', tipo: 'escrito', titulo: 'Evolución del delito en la empresa', descripcion: 'Desarrollo de las cuatro fases y su impacto empresarial.', fechaSubida: '2026-11-21', urlOContenido: 'tab-2', modulo: 2 },
@@ -1405,15 +1422,74 @@
                     { id: 'infografia-oficial', tipo: 'info', titulo: 'Infografía oficial', descripcion: 'Síntesis visual de los cinco ejes de la unidad curricular.', fechaSubida: '2026-11-21', urlOContenido: 'tab-5', modulo: 5, scrollTarget: 'github-infographic-main' },
                     { id: 'grabacion-exposicion', tipo: 'grabacion', titulo: 'Material audiovisual relacionado', descripcion: 'Grabación vinculada con la exposición y el cumplimiento normativo.', fechaSubida: '2026-11-21', urlOContenido: 'tab-5', modulo: 5, scrollTarget: 'github-whatsapp-video' }
                 ],
-                pendientes: [
-                    { id: 'actividad-analisis', tipo: 'taller', titulo: 'Taller: análisis de riesgos en la empresa', fechaEntrega: '2026-12-10', completado: false },
-                    { id: 'evaluacion-modulo', tipo: 'examen', titulo: 'Evaluación de marco normativo', fechaEntrega: '2026-12-17', completado: false }
-                ]
+                pendientes: []
             },
-            { id: 'metodologia-investigacion', nombre: 'Metodología de la Investigación', profesor: 'Por asignar', horario: 'Por definir', recursos: [{ id: 'metodologia-guia', tipo: 'escrito', titulo: 'Guía de metodología', descripcion: 'Material de ejemplo para reemplazar por el contenido oficial.', fechaSubida: '2026-11-26', urlOContenido: 'Guía de estudio' }], pendientes: [] },
-            { id: 'derecho-constitucional', nombre: 'Derecho Constitucional', profesor: 'Por asignar', horario: 'Por definir', recursos: [{ id: 'constitucional-intro', tipo: 'info', titulo: 'Introducción a la unidad', descripcion: 'Espacio de ejemplo para organizar información general.', fechaSubida: '2026-11-26', urlOContenido: 'Información general' }], pendientes: [] },
-            { id: 'criminologia', nombre: 'Criminología', profesor: 'Por asignar', horario: 'Por definir', recursos: [{ id: 'criminologia-audio', tipo: 'grabacion', titulo: 'Clase introductoria', descripcion: 'Recurso demostrativo; sustituir por la grabación real.', fechaSubida: '2026-11-26', urlOContenido: '' }], pendientes: [] },
-            { id: 'derecho-penal', nombre: 'Derecho Penal Económico', profesor: 'Por asignar', horario: 'Por definir', recursos: [{ id: 'penal-material', tipo: 'escrito', titulo: 'Lectura inicial', descripcion: 'Ejemplo de recurso documental para esta unidad.', fechaSubida: '2026-11-26', urlOContenido: 'Lectura inicial' }], pendientes: [] }
+            {
+                id: 'proteccion-ambiente',
+                nombre: 'Protección Jurídica del Medio Ambiente',
+                nombreCorto: 'Medio Ambiente',
+                diasClase: 'Lunes',
+                profesor: 'Prof. Yesenia Azuaje',
+                horario: 'Lunes | 7:30 PM - 9:00 PM (2 Horas)',
+                aula: 'CH7-D (Piso 7)',
+                recursos: [],
+                pendientes: []
+            },
+            {
+                id: 'resolucion-conflictos',
+                nombre: 'Resolución Judicial del Conflicto',
+                nombreCorto: 'Resolución del Conflicto',
+                diasClase: 'Martes',
+                profesor: 'Prof. Julian Matute',
+                horario: 'Martes | 6:00 PM - 8:15 PM (3 Horas)',
+                aula: 'CH7-D (Piso 7)',
+                recursos: [],
+                pendientes: []
+            },
+            {
+                id: 'proyecto-iv',
+                nombre: 'Proyecto IV: Justicia Comunitaria',
+                nombreCorto: 'Proyecto IV',
+                diasClase: 'Miércoles / Sábado',
+                profesor: 'Prof. Yajaira Prim',
+                horario: 'Miércoles (Teoría 2h: 6:00 PM - 7:30 PM) y Sábado (Práctica 6h: 7:30 AM - 12:00 PM)',
+                aula: 'CH7-D / Comunidad',
+                recursos: [],
+                pendientes: []
+            },
+            {
+                id: 'amparo-constitucional',
+                nombre: 'Electiva: Amparo Constitucional',
+                nombreCorto: 'Amparo Constitucional',
+                diasClase: 'Miércoles',
+                profesor: 'Prof. Eugenio Herrera',
+                horario: 'Miércoles | 7:30 PM - 9:00 PM (2 Horas)',
+                aula: 'CH7-D (Piso 7)',
+                recursos: [],
+                pendientes: []
+            },
+            {
+                id: 'propiedad-derecho',
+                nombre: 'Propiedad y Derecho',
+                nombreCorto: 'Propiedad y Derecho',
+                diasClase: 'Jueves',
+                profesor: 'Prof. Luis Decimavilla',
+                horario: 'Jueves | 6:00 PM - 8:15 PM (3 Horas)',
+                aula: 'CH7-D (Piso 7)',
+                recursos: [],
+                pendientes: []
+            },
+            {
+                id: 'acompanamiento-comunitario',
+                nombre: 'Acompañamiento Socio-Comunitario',
+                nombreCorto: 'Acomp. Socio-Comunitario',
+                diasClase: 'Viernes',
+                profesor: 'Prof. Yldemaro Torres',
+                horario: 'Viernes | 6:00 PM - 7:30 PM (2 Horas)',
+                aula: 'CH7-D (Piso 7)',
+                recursos: [],
+                pendientes: []
+            }
         ];
 
         const unitIcons = {
@@ -1470,6 +1546,7 @@
                     });
                     if (Array.isArray(savedUnit.pendientes)) savedUnit.pendientes.forEach(activity => {
                         if (!activity || !activity.id || !activity.titulo) return;
+                        if (activity.id === 'actividad-analisis' || activity.id === 'evaluacion-modulo') return;
                         const index = unit.pendientes.findIndex(item => item.id === activity.id);
                         if (index < 0) unit.pendientes.push(activity);
                         else unit.pendientes[index] = { ...unit.pendientes[index], ...activity };
@@ -1497,12 +1574,12 @@
         }
 
         function renderUnitList() {
-            document.getElementById('drawer-active-course').textContent = getActiveUnit().nombre;
+            document.getElementById('drawer-active-course').textContent = getActiveUnit().nombreCorto;
             document.getElementById('unit-list').innerHTML = curricularUnits.map(unit => `
                 <button type="button" class="unit-button ${unit.id === activeUnitId ? 'active' : ''}" onclick="selectUnit('${escapeHTML(unit.id)}')">
                     <span class="flex items-start gap-3">
                         <span class="mt-0.5 text-[#8B1E3F]">${unitIcons.escrito}</span>
-                        <span class="min-w-0"><span class="block text-sm leading-snug">${escapeHTML(unit.nombre)}</span><span class="block mt-1 text-[10px] text-slate-500">${unit.recursos.length} materiales</span></span>
+                        <span class="min-w-0"><span class="block text-sm leading-snug">${escapeHTML(unit.nombre)}</span><span class="block mt-1 text-[10px] text-slate-500">${escapeHTML(unit.diasClase)} · ${unit.recursos.length} materiales</span></span>
                     </span>
                 </button>`).join('');
         }
@@ -1543,8 +1620,9 @@
             activeUnitId = unitId;
             activeResourceFilter = 'todo';
             document.querySelectorAll('.filter-button').forEach(button => button.classList.toggle('active', button.dataset.filter === 'todo'));
+            document.getElementById('active-course-short').textContent = getActiveUnit().nombreCorto;
             document.getElementById('course-title').textContent = getActiveUnit().nombre;
-            document.getElementById('course-meta').innerHTML = `<span>Docente: ${escapeHTML(getActiveUnit().profesor)}</span><span>Horario: ${escapeHTML(getActiveUnit().horario)}</span>`;
+            document.getElementById('course-meta').innerHTML = `<span>Docente: ${escapeHTML(getActiveUnit().profesor)}</span><span>Horario: ${escapeHTML(getActiveUnit().horario)}</span><span>Aula: ${escapeHTML(getActiveUnit().aula)}</span>`;
             document.getElementById('course-dashboard').classList.remove('hidden');
             document.getElementById('module-content').classList.add('hidden');
             document.body.classList.remove('module-open');
@@ -2365,10 +2443,7 @@
             loadTheme();
             renderNormsAccordion('all');
             selectEvoPhase(0);
-            renderUnitList();
-            renderModuleList();
-            renderResources();
-            updatePendingCount();
+            selectUnit(activeUnitId);
             bindCourseForms();
             updateClock();
             window.setInterval(updateClock, 1000);
